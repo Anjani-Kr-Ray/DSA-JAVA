@@ -1,4 +1,4 @@
-// https://nados.io/question/infix-conversions
+package Applications;// https://nados.io/question/infix-conversions
 
 import java.util.Scanner;
 import java.util.Stack;

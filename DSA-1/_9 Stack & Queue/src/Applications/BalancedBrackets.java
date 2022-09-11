@@ -1,4 +1,4 @@
-// https://nados.io/question/balanced-brackets
+package Applications;// https://nados.io/question/balanced-brackets
 
 import java.util.Scanner;
 import java.util.Stack;

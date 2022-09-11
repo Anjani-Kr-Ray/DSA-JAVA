@@ -1,4 +1,4 @@
-// https://nados.io/question/duplicate-brackets
+package Applications;// https://nados.io/question/duplicate-brackets
 
 import java.util.Scanner;
 import java.util.Stack;

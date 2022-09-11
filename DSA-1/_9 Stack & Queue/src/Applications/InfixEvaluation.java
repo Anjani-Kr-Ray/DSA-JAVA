@@ -1,4 +1,4 @@
-// https://nados.io/question/infix-evaluation
+package Applications;// https://nados.io/question/infix-evaluation
 
 import java.util.Scanner;
 import java.util.Stack;

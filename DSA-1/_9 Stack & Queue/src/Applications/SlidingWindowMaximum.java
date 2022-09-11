@@ -1,6 +1,7 @@
 // https://nados.io/question/sliding-window-maximum
 
-import java.util.Arrays;
+package Applications;
+
 import java.util.Scanner;
 import java.util.Stack;
 

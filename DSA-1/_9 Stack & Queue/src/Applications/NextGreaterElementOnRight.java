@@ -1,5 +1,7 @@
 // https://nados.io/question/next-greater-element-to-the-right
 
+package Applications;
+
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;

@@ -1,4 +1,4 @@
-// https://nados.io/question/celebrity-problem
+package Applications;// https://nados.io/question/celebrity-problem
 
 import java.util.Scanner;
 import java.util.Stack;

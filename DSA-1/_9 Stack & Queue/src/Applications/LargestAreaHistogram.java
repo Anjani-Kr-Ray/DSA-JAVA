@@ -1,4 +1,4 @@
-// https://nados.io/question/largest-area-histogram
+package Applications;// https://nados.io/question/largest-area-histogram
 
 import java.util.Scanner;
 import java.util.Stack;
