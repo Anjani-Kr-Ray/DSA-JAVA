@@ -1,0 +1,109 @@
+// https://nados.io/question/dynamic-queue
+
+package DesignAndImplementation;
+
+import java.util.Scanner;
+
+public class DynamicQueue {
+    public static class CustomQueue {
+        int[] data;
+        int front;
+        int size;
+
+        public CustomQueue(int cap) {
+            data = new int[cap];
+            front = 0;
+            size = 0;
+        }
+
+        int size() {
+            // write ur code here
+            return size;
+        }
+
+        void display() {
+            // write ur code here
+            for(int i = 0; i < size; i++){
+                int idx = (front + i) % data.length;
+                System.out.print(data[idx] + " ");
+            }
+            System.out.println();
+        }
+
+        // change this code
+        void add(int val) {
+            // write ur code here
+            if(size == data.length){
+                int[] temp = new int[data.length*2];
+                for(int i = 0; i < size; i++){
+                    int idx = (front + i) % data.length;
+                    temp[i] = data[idx];
+                }
+                front = 0;
+                data = temp;
+                int idx = (front + size) % data.length;
+                data[idx] = val;
+                size++;
+            } else {
+                int idx = (front + size) % data.length;
+                data[idx] = val;
+                size++;
+            }
+        }
+
+        int remove() {
+            // write ur code here
+            if(size == 0){
+                System.out.println("Queue underflow");
+                return -1;
+            } else {
+                int val = data[front];
+
+                front = (front + 1) % data.length;
+                size--;
+
+                return val;
+            }
+        }
+
+        int peek() {
+            // write ur code here
+            if(size == 0){
+                System.out.println("Queue underflow");
+                return -1;
+            } else {
+                int val = data[front];
+                return val;
+            }
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        NormalQueue.CustomQueue qu = new NormalQueue.CustomQueue(n);
+
+        String str = sc.nextLine();
+        while(str.equals("quit") == false){
+            if(str.startsWith("add")){
+                int val = Integer.parseInt(str.split(" ")[1]);
+                qu.add(val);
+            } else if(str.startsWith("remove")){
+                int val = qu.remove();
+                if(val != -1){
+                    System.out.println(val);
+                }
+            } else if(str.startsWith("peek")){
+                int val = qu.peek();
+                if(val != -1){
+                    System.out.println(val);
+                }
+            } else if(str.startsWith("size")){
+                System.out.println(qu.size());
+            } else if(str.startsWith("display")){
+                qu.display();
+            }
+            str = sc.nextLine();
+        }
+    }
+}
