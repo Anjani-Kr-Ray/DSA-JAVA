@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class LinkedList {
+public class LinkedListImpli {
 
     Node head;
     Node tail;
@@ -203,9 +203,91 @@ public class LinkedList {
         tail = temp;
     }
 
+    // https://nados.io/question/kth-node-from-end-of-linked-list
+    public int kthFromLast(int k){
+        Node slow = head;
+        Node fast = head;
+
+        for(int i=0; i<k; i++) {
+            fast = fast.next;
+        }
+
+        while(fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        return slow.data;
+    }
+
+    // https://nados.io/question/mid-of-linked-list
+    public int mid(){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow.data;
+    }
+
+    // https://nados.io/question/display-reverse-recursive-linked-list
+    public void reverseDisplayHelper(Node node) {
+        if(node == null)
+            return;
+        reverseDisplayHelper(node.next);
+        System.out.print(node.data+" ");
+    }
+
+    public void reverseDisplay() {
+        reverseDisplayHelper(head);
+    }
+
+    // https://nados.io/question/reverse-linked-list-pointer-recursive
+    private void reversePRHelper(Node node) {
+        if(node == null)
+            return;
+        reversePRHelper(node.next);
+        if(node != tail)
+            node.next.next = node;
+    }
+
+    public void reversePR() {
+        reversePRHelper(head);
+        head.next = null;
+        Node temp = head;
+        head = tail;
+        tail = temp;
+    }
+
+    Node left;
+    private void reverseDRHelper(Node right, int floor) {
+        if(right == null)
+            return;
+        reverseDRHelper(right.next, floor+1);
+
+        // swap
+        if(floor >= size/2) {
+            int temp = right.data;
+            right.data = left.data;
+            left.data = temp;
+        }
+
+        left = left.next;
+    }
+
+    public void reverseDR() {
+        left = head;
+        reverseDRHelper(head, 0);
+
+    }
+
+
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        LinkedList list = new LinkedList();
+        LinkedListImpli list = new LinkedListImpli();
 
         String str = sc.nextLine();
         while (str.equals("quit") == false) {
@@ -250,6 +332,15 @@ public class LinkedList {
                 list.reverseDI();
             } else if(str.startsWith("reversePI")){
                 list.reversePI();
+            } else if(str.startsWith("kthFromEnd")){
+                int idx = Integer.parseInt(str.split(" ")[1]);
+                System.out.println(list.kthFromLast(idx));
+            } else if(str.startsWith("mid")){
+                System.out.println(list.mid());
+            } else if(str.startsWith("reverseDR")) {
+                list.reverseDisplay();
+            } else if(str.startsWith("reversePR")) {
+                list.reversePR();
             }
             str = sc.nextLine();
         }
