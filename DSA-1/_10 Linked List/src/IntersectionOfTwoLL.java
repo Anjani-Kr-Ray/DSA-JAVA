@@ -1,3 +1,5 @@
+// https://nados.io/question/intersection-point-of-linked-lists
+
 import java.util.Scanner;
 
 public class IntersectionOfTwoLL {
